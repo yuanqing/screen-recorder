@@ -4,12 +4,12 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "concurrently npm:build:css npm:build:html npm:build:js",
-    "build:css": "esbuild src/css/style.css --bundle --minify --outfile=build/style.css",
-    "build:html": "cpy src/html/index.html build --flat",
-    "build:js": "esbuild src/js/script.js --bundle --minify --outfile=build/script.js",
-    "clean": "rimraf '*.log' build",
+    "build:css": "esbuild src/css/style.css --bundle --minify --outfile=docs/style.css",
+    "build:html": "cpy src/html/index.html docs --flat",
+    "build:js": "esbuild src/js/script.js --bundle --minify --outfile=docs/script.js",
+    "clean": "rimraf '*.log' docs",
     "fix": "prettier --write 'src/**/*'",
-    "serve": "sirv build --cert cert.pem --dev --host --http2 --key key.pem --port 4242"
+    "serve": "sirv docs --cert cert.pem --dev --host --http2 --key key.pem --port 4242"
   },
   "dependencies": {
     "fix-webm-duration": "^1.0.5"
