@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "concurrently npm:build:css npm:build:html npm:build:js",
+    "build:css": "esbuild src/css/style.css --bundle --minify --outfile=build/style.css",
+    "build:html": "cpy src/html/index.html build --flat",
+    "build:js": "esbuild src/js/script.js --bundle --minify --outfile=build/script.js",
+    "clean": "rimraf '*.log' build",
+    "fix": "prettier --write 'src/**/*'",
+    "serve": "sirv build --cert cert.pem --dev --host --http2 --key key.pem --port 4242"
+  },
+  "dependencies": {
+    "fix-webm-duration": "^1.0.5"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "cpy-cli": "^4.2.0",
+    "esbuild": "^0.16.14",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "sirv-cli": "^2.0.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
+}
